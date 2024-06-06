@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Index Page{% endblock %}
+
+{% set is_index_page = true %}
+{% if filter %}
+    {% set maker_value = filter.maker if 'maker' in filter and filter.maker else "" %}
+    {% set body_type_value = filter.body_type if 'body_type' in filter and filter.body_type else "" %}
+    {% set is_mt = True if 'transmission' in filter and filter.transmission == 'MT' else False %}
+    {% set year_value = filter.year if 'year' in filter and filter.year else "" %}
+{% endif %}
+{% block content %}
+    <main>
+        <h2>Отфильтровать</h2>
+        <form action="/submit" method="post">
+            <div>
+                <label for="maker">Марка:</label>
+                <select id="maker" name="maker">
+                    <option value="">Любая</option>
+                    {% for m in makers %}
+                        <option value="{{ m }}"{% if m == maker_value %} selected="selected" {% endif %}>{{ m }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="body_type">Тип кузова:</label>
+                <select id="body_type" name="body_type">
+                    <option value="">Любой</option>
+                    {% for bt, n in body_types.items() %}
+                        <option value="{{ bt }}"{% if bt == body_type_value %} selected="selected" {% endif %}>{{ n }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="transmission">Коробка передач:</label>
+                <select id="transmission" name="transmission">
+                    <option value="">Любая</option>
+                    <option value="MT"{% if is_mt %} selected="selected"{% endif %}>Ручная</option>
+                </select>
+            </div>
+            <div>
+                <label for="year">Год выпуска (от):</label>
+                <input type="number" min="1900" max="{{ current_year }}" id="year" name="year"{% if year_value %} value="{{ year_value }}"{% endif %}>
+            </div>
+            <div>
+                <input type="submit" value="Сгенерировать ссылки">
+            </div>
+        </form>
+    </main>
+{% endblock %}

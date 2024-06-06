@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Static Page{% endblock %}
+
+{% block content %}
+    <main>
+        <h2>Результаты фильтрации</h2>
+        <ul>
+            <li>Марка: {{ filter.maker or "—" }}</li>
+            <li>Тип кузова: {{ filter.body_type or "—" }}</li>
+            <li>Коробка передач: {{ filter.transmission or "—" }}</li>
+            <li>Год выпуска (от): {{ filter.year or "—" }}</li>
+        </ul>
+        <hr>
+        <p>Ссылки на сайты:</p>
+        <ul>
+            {% for website in list %}
+                <li>{% include 'buttons/%s.html' % website.template  %}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+    </main>
+{% endblock %}

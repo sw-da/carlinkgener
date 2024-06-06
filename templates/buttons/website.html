@@ -1,0 +1,20 @@
+{% set method = 'post' if website.is_post else 'get' %}
+<div class="link-button">
+    <form action="{{ website.url }}" method="{{ method }}" target="_blank">
+        {% if website.maker and website.maker.value != "" %}
+            <input type="hidden" name="{{ website.maker.name }}" value="{{ website.maker.value }}">
+        {% endif %}
+        {% if website.transmission and website.transmission.value != "" %}
+            <input type="hidden" name="{{ website.transmission.name }}" value="{{ website.transmission.value }}">
+        {% endif %}
+        {% if website.year and website.year.value != "" %}
+            <input type="hidden" name="{{ website.year.name }}" value="{{ website.year.value }}">
+        {% endif %}
+        {% if website.body_type and website.body_type.value != "" %}
+            <input type="hidden" name="{{ website.body_type.name }}" value="{{ website.body_type.value }}">
+        {% endif %}
+        <input type="hidden" name="{{ website.sort_name }}" value="{{ website.sort_value }}">
+        {% block inputs %}{% endblock %}
+        <input type="submit" value="{{ website.name }}">
+    </form>
+</div>

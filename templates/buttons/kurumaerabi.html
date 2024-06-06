@@ -1,0 +1,57 @@
+{% extends "buttons/website.html" %}
+
+{% block inputs %}
+    <input type="hidden" name="form_type" value="usedcar/list">
+    <input type="hidden" name="stri" value="">
+    <input type="hidden" name="md" value="">
+    <input type="hidden" name="lt" value="">
+    <input type="hidden" name="lm" value="30">
+    <input type="hidden" name="it" value="">
+    <input type="hidden" name="gi" value="">
+    {#<input type="hidden" name="od" value="N">#}
+    <input type="hidden" name="facet" value="Bm">
+    <input type="hidden" name="load_uri" value="">
+    <input type="hidden" name="dcmi" value="">
+    {% if not website.maker or website.maker.value == "" %}<input type="hidden" name="cmi" value="">{% endif %}
+    <input type="hidden" name="cngi" value="0">
+    <input type="hidden" name="cni" value="0">
+    {% if website.maker and website.maker.value != "" %}
+        <input type="hidden" name="select_cmi" value="{{ website.maker.value }}">
+    {% else %}
+        <input type="hidden" name="select_cmi" value="">
+    {% endif %}
+    <input type="hidden" name="ai" value="">
+    {% if not website.body_type or website.body_type.value == "" %}<input type="hidden" name="cbi" value="2">{% endif %}
+    {% if not website.year or website.year.value == "" %}<input type="hidden" name="frds" value="2021">{% endif %}
+    <input type="hidden" name="frde" value="">
+    <input type="hidden" name="mls" value="">
+    <input type="hidden" name="mle" value="">
+    <input type="hidden" name="system" value="">
+    <input type="hidden" name="dsys" value="">
+    <input type="hidden" name="transmission" value="">
+    {% if not website.transmission or website.transmission.value == "" %}<input type="hidden" name="mi" value="">{% endif %}
+    <input type="hidden" name="sps" value="">
+    <input type="hidden" name="spe" value="">
+    <input type="hidden" name="ed" value="">
+    <input type="hidden" name="hd" value="">
+    <input type="hidden" name="fo" value="">
+    <input type="hidden" name="rs" value="">
+    <input type="hidden" name="cp" value="">
+    <input type="hidden" name="dvs" value="">
+    <input type="hidden" name="dve" value="">
+    <input type="hidden" name="fl" value="">
+    <input type="hidden" name="dr" value="">
+    <input type="hidden" name="sldr" value="">
+    <input type="hidden" name="lmin" value="">
+    <input type="hidden" name="lmax" value="">
+    <input type="hidden" name="wmin" value="">
+    <input type="hidden" name="wmax" value="">
+    <input type="hidden" name="hmin" value="">
+    <input type="hidden" name="hmax" value="">
+    <input type="hidden" name="carnavi" value="">
+    <input type="hidden" name="tv" value="">
+    <input type="hidden" name="video" value="">
+    <input type="hidden" name="audio" value="">
+    <input type="hidden" name="key" value="">
+    <input type="hidden" name="keys" value="">
+{% endblock %}

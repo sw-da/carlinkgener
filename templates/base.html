@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Web Service{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header h1, footer {
+            margin: 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* External links icon */
+        a[target="_blank"]::after {
+            content: '\f35d'; /* Font Awesome Unicode for external link icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900; /* Required for solid icons */
+            display: inline-block;
+            margin-left: 5px; /* Adjust the margin as needed */
+            vertical-align: middle; /* Align icon with the text */
+        }
+
+        a.return-back {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header, footer {
+                padding: 15px;
+            }
+            input, select {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ссылки на машинки</h1>
+    </header>
+
+    {% block content %}{% endblock %}
+    {% if not is_index_page %}
+    <p>
+        <a class="return-back" href="/">Вернуться</a>
+    </p>
+    {% endif %}
+</body>
+</html>
